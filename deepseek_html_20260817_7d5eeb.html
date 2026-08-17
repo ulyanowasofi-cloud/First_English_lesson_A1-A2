@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>English Lesson ✦ A1–A2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+    <style>
+        /* RESET & BASE */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Lato', sans-serif;
+            background: #fbf7f2;
+            background-image: radial-gradient(circle at 20% 30%, #f7eee8 0%, #f3e8e0 90%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1.5rem;
+            margin: 0;
+            color: #3e3632;
+        }
+        .app {
+            max-width: 1000px;
+            width: 100%;
+            background: rgba(255, 250, 245, 0.7);
+            backdrop-filter: blur(4px);
+            border-radius: 48px;
+            padding: 2rem 2rem 2rem;
+            box-shadow: 0 20px 60px rgba(140, 110, 90, 0.15);
+            border: 1px solid rgba(245, 230, 220, 0.5);
+            position: relative;
+            transition: all 0.2s;
+            min-height: 600px;
+        }
+        /* декоративные элементы */
+        .deco {
+            position: absolute;
+            pointer-events: none;
+            opacity: 0.08;
+            font-size: 6rem;
+            transform: rotate(15deg);
+        }
+        .deco1 { top: 10px; right: 20px; }
+        .deco2 { bottom: 10px; left: 20px; transform: rotate(-20deg); }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.2rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .progress-wrap {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 0.9rem;
+            color: #7a645a;
+        }
+        .progress-bar-bg {
+            width: 140px;
+            height: 6px;
+            background: #e6d5cb;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: #dbb8ab;
+            border-radius: 12px;
+            transition: width 0.4s ease;
+            width: 0%;
+        }
+        .step-indicator { font-weight: 300; letter-spacing: 0.3px; }
+        .teacher-toggle {
+            background: none;
+            border: 1px solid #dccbc2;
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            color: #7a645a;
+            cursor: pointer;
+            transition: 0.2s;
+            font-family: 'Lato', sans-serif;
+        }
+        .teacher-toggle:hover { background: #dccbc2; color: #3e3632; }
+        .teacher-toggle.active { background: #dbb8ab; border-color: #dbb8ab; color: #fff8f4; }
+
+        .nav-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 2rem;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+        .nav-btn {
+            background: #ede0d9;
+            border: none;
+            padding: 0.5rem 1.6rem;
+            border-radius: 40px;
+            font-family: 'Lato', sans-serif;
+            font-weight: 400;
+            color: #5f4a3f;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: 0.2s;
+            border: 1px solid transparent;
+        }
+        .nav-btn:hover:not(:disabled) { background: #dccbc2; }
+        .nav-btn:disabled { opacity: 0.3; cursor: default; }
+        .nav-btn.primary { background: #dbb8ab; color: #fff8f4; }
+        .nav-btn.primary:hover:not(:disabled) { background: #ccaa99; }
+
+        .screen { display: none; animation: fade 0.35s ease; }
+        .screen.active { display: block; }
+        @keyframes fade { 0% { opacity:0; transform:translateY(10px); } 100% { opacity:1; transform:translateY(0); } }
+
+        .card {
+            background: rgba(255, 248, 244, 0.75);
+            backdrop-filter: blur(2px);
+            border-radius: 32px;
+            padding: 1.8rem 2rem;
+            box-shadow: 0 8px 28px rgba(160, 130, 115, 0.08);
+            border: 1px solid #f5e4db;
+        }
+        .card h2 { font-family: 'Playfair Display', serif; font-weight: 400; color: #a67b6b; font-size: 2rem; margin-bottom: 0.5rem; }
+        .card h3 { font-family: 'Playfair Display', serif; font-weight: 400; color: #a67b6b; font-size: 1.4rem; margin-bottom: 0.5rem; }
+        .sub { color: #7a645a; font-weight: 300; font-size: 1.05rem; margin-bottom: 1.2rem; }
+
+        .btn {
+            background: #ede0d9;
+            border: none;
+            padding: 0.5rem 1.6rem;
+            border-radius: 40px;
+            font-family: 'Lato', sans-serif;
+            font-weight: 400;
+            color: #5f4a3f;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: 0.2s;
+            border: 1px solid transparent;
+        }
+        .btn:hover:not(:disabled) { background: #dccbc2; }
+        .btn-primary { background: #dbb8ab; color: #fff8f4; }
+        .btn-primary:hover:not(:disabled) { background: #ccaa99; }
+        .btn:disabled { opacity: 0.4; cursor: default; }
+
+        .emoji-grid {
+            display: flex; gap: 1.2rem; flex-wrap: wrap; justify-content: center; margin: 1rem 0;
+        }
+        .emoji-item {
+            font-size: 2.8rem;
+            cursor: pointer;
+            transition: 0.2s;
+            padding: 0.3rem 0.6rem;
+            border-radius: 60px;
+            border: 2px solid transparent;
+            background: transparent;
+            line-height: 1.2;
+            text-align: center;
+        }
+        .emoji-item:hover { transform: scale(1.15); }
+        .emoji-item.selected { border-color: #dbb8ab; background: rgba(219,184,171,0.15); transform: scale(1.1); }
+        .emoji-label { font-size:0.8rem; color:#7a645a; display:block; margin-top:2px; }
+
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+        @media (max-width:500px) { .grid-2 { grid-template-columns:1fr; } }
+        .inline-flex { display: inline-flex; gap: 0.6rem; flex-wrap: wrap; }
+
+        /* Wheel */
+        .wheel-container { display: flex; flex-direction: column; align-items: center; gap: 1.2rem; }
+        .wheel-canvas-wrap { position: relative; width: 280px; height: 280px; }
+        #wheelCanvas { width:100%; height:100%; border-radius:50%; box-shadow:0 8px 30px rgba(160,120,100,0.2); cursor:pointer; background:#f5e4db; }
+        .wheel-question-box {
+            background: rgba(255,248,244,0.9); border-radius:24px; padding:1rem 1.8rem;
+            min-height:70px; width:100%; max-width:500px; display:flex; align-items:center; justify-content:center;
+            font-size:1.2rem; color:#3e3632; border:1px solid #e6d5cb; text-align:center;
+        }
+        .wheel-question-box .placeholder { color:#b39184; font-style:italic; font-weight:300; }
+
+        /* Picture talk */
+        .pic-img { width:100%; max-height:250px; object-fit:cover; border-radius:24px; margin-bottom:1rem; box-shadow:0 4px 16px rgba(0,0,0,0.06); }
+        .word-bank { display: flex; flex-wrap: wrap; gap:0.4rem; margin:0.5rem 0; }
+        .word-chip {
+            background:#fdf9f6; padding:0.3rem 1rem; border-radius:30px; border:1px solid #e6d5cb;
+            cursor:pointer; transition:0.2s; font-size:0.9rem;
+        }
+        .word-chip:hover { background:#ede0d9; }
+        .word-chip.selected { background:#dbb8ab; color:#fff; border-color:#dbb8ab; }
+
+        /* Drag & drop matching */
+        .match-area { display:flex; gap:2rem; flex-wrap:wrap; justify-content:center; margin:1rem 0; }
+        .match-col { display:flex; flex-direction:column; gap:0.6rem; }
+        .match-item {
+            background:#fdf9f6; padding:0.5rem 1.2rem; border-radius:40px; border:2px solid #e6d5cb;
+            cursor:grab; transition:0.2s; text-align:center; min-width:120px;
+        }
+        .match-item.dragging { opacity:0.5; }
+        .match-item.matched { border-color:#6f9e7a; background:#e6f0e6; cursor:default; }
+
+        .teacher-notes {
+            background:#f5f0eb; border-radius:18px; padding:0.8rem 1.5rem; margin:0.8rem 0;
+            border-left:4px solid #dbb8ab; display:none; font-size:0.9rem; color:#5f4a3f;
+        }
+        .teacher-notes.visible { display:block; }
+        .teacher-notes ul { margin:0.3rem 0 0 1.2rem; }
+
+        .hint-box { background:#fdf9f6; border-radius:16px; padding:0.8rem 1.2rem; margin:0.5rem 0; border-left:4px solid #b39184; }
+
+        @media (max-width:640px) { .app { padding:1.2rem; } .card { padding:1.2rem; } .header { flex-direction:column; align-items:stretch; } .progress-wrap { justify-content:center; } .wheel-canvas-wrap { width:200px; height:200px; } }
+        .flex-center { display:flex; justify-content:center; align-items:center; flex-direction:column; gap:0.8rem; }
+        .mt-1 { margin-top:1rem; }
+        .text-center { text-align:center; }
+        .hidden { display:none; }
+        .tag { background:#ede0d9; padding:0.2rem 0.8rem; border-radius:30px; font-size:0.8rem; color:#5f4a3f; }
+    </style>
+</head>
+<body>
+<div class="app" id="app">
+    <span class="deco deco1">✦</span><span class="deco deco2">✧</span>
+    <div class="header">
+        <div class="progress-wrap">
+            <span class="step-indicator" id="stepIndicator">1 / 24</span>
+            <div class="progress-bar-bg"><div class="progress-fill" id="progressFill" style="width:4%"></div></div>
+        </div>
+        <button class="teacher-toggle" id="teacherToggle">👩‍🏫 Teacher mode</button>
+    </div>
+    <div id="screenContainer"></div>
+    <div class="nav-bar">
+        <button class="nav-btn" id="prevBtn" disabled>← Back</button>
+        <span style="color:#7a645a; font-size:0.9rem;" id="navCounter">1 / 24</span>
+        <button class="nav-btn primary" id="nextBtn">Next →</button>
+    </div>
+</div>
+<script>
+    // ============================================================
+    // DATA & CONFIG
+    // ============================================================
+    const CONFIG = {
+        wheelQuestions: [
+            "What's your favourite food?",
+            "What do you do at weekends?",
+            "Do you like travelling?",
+            "What's your favourite film?",
+            "What music do you like?",
+            "Do you have a pet?",
+            "What's your favourite season?",
+            "What time do you usually wake up?",
+            "What do you do after work / school?",
+            "What's your favourite place in your city?",
+            "Do you like cooking?",
+            "What apps do you use every day?"
+        ],
+        // для picture talk
+        pictureQuestions: [
+            { img: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=600&h=300&fit=crop&crop=center', words: ['table','coffee','woman','friends','window','food','talk','sit'] },
+            { img: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&h=300&fit=crop&crop=center', words: ['sea','sand','sun','umbrella','boat','swim'] }
+        ],
+        opposites: [
+            { a: 'big', b: 'small' },
+            { a: 'cheap', b: 'expensive' },
+            { a: 'hot', b: 'cold' },
+            { a: 'busy', b: 'quiet' },
+            { a: 'easy', b: 'difficult' },
+            { a: 'old', b: 'new' }
+        ]
+    };
+
+    // ============================================================
+    // STATE
+    // ============================================================
+    const state = {
+        currentScreen: 0,
+        screens: [],
+        // mood
+        selectedMood: null,
+        // easy choices
+        easyChoices: {},
+        // wheel
+        availableQuestions: [...CONFIG.wheelQuestions],
+        wheelRotation: 0,
+        // picture talk
+        picIndex: 0,
+        picSelectedWords: [],
+        picStep: 0,
+        // matching
+        matchedPairs: [],
+        // opposites game (memory)
+        oppositesFlipped: [],
+        oppositesMatched: [],
+        // listening
+        listeningAnswered: false,
+        // etc.
+        teacherMode: false,
+        // speaking challenge
+        challengeTopic: null,
+        challengeTimer: 30,
+    };
+
+    // ============================================================
+    // SCREENS DEFINITION
+    // ============================================================
+    function buildScreens() {
+        return [
+            'hello','mood','easychoices','wheel','aboutyou','picturetalk',
+            'wordsyouknow','matchword','opposites','grammargame','buildsentence',
+            'whathappened','listening','listeningpicture','audiorepeat',
+            'foodgame','shopping','traveleasy','suitcase','guessword',
+            'whoisit','weather','speaking','rapidfire','final'
+        ];
+    }
+
+    // ============================================================
+    // RENDER ENGINE
+    // ============================================================
+    function renderScreen(index) {
+        const container = document.getElementById('screenContainer');
+        const screens = state.screens;
+        if (index < 0 || index >= screens.length) return;
+        const id = screens[index];
+        let html = `<div class="screen active" data-screen="${id}">`;
+        html += getScreenHTML(id);
+        html += `</div>`;
+        container.innerHTML = html;
+
+        document.getElementById('stepIndicator').textContent = `${index+1} / ${screens.length}`;
+        document.getElementById('navCounter').textContent = `${index+1} / ${screens.length}`;
+        document.getElementById('prevBtn').disabled = (index === 0);
+        document.getElementById('nextBtn').disabled = (index === screens.length-1);
+        document.getElementById('progressFill').style.width = `${((index+1)/screens.length)*100}%`;
+
+        initScreen(id);
+        updateTeacherNotes(id);
+    }
+
+    function getScreenHTML(id) {
+        switch(id) {
+            case 'hello': return helloHTML();
+            case 'mood': return moodHTML();
+            case 'easychoices': return easyChoicesHTML();
+            case 'wheel': return wheelHTML();
+            case 'aboutyou': return aboutYouHTML();
+            case 'picturetalk': return pictureTalkHTML();
+            case 'wordsyouknow': return wordsYouKnowHTML();
+            case 'matchword': return matchWordHTML();
+            case 'opposites': return oppositesHTML();
+            case 'grammargame': return grammarGameHTML();
+            case 'buildsentence': return buildSentenceHTML();
+            case 'whathappened': return whatHappenedHTML();
+            case 'listening': return listeningHTML();
+            case 'listeningpicture': return listeningPictureHTML();
+            case 'audiorepeat': return audioRepeatHTML();
+            case 'foodgame': return foodGameHTML();
+            case 'shopping': return shoppingHTML();
+            case 'traveleasy': return travelEasyHTML();
+            case 'suitcase': return suitcaseHTML();
+            case 'guessword': return guessWordHTML();
+            case 'whoisit': return whoIsItHTML();
+            case 'weather': return weatherHTML();
+            case 'speaking': return speakingHTML();
+            case 'rapidfire': return rapidFireHTML();
+            case 'final': return finalHTML();
+            default: return '<p>Screen not found</p>';
+        }
+    }
+
+    // ---------- SCREEN BUILDERS ----------
+    function helloHTML() {
+        return `
+            <div class="card text-center" style="padding:2.5rem 2rem;">
+                <h2 style="font-size:2.8rem;">Hi! 👋</h2>
+                <p style="font-size:1.4rem; color:#7a645a;">Let's speak some English today.</p>
+                <p class="sub">No tests. No stress. Just try.</p>
+                <div style="display:flex; gap:1.5rem; justify-content:center; flex-wrap:wrap; margin:1rem 0; font-size:2.5rem;">
+                    <span>🎧</span><span>📱</span><span>☕</span><span>📖</span><span>😊</span>
+                </div>
+                <button class="btn btn-primary" style="font-size:1.2rem; padding:0.6rem 2.5rem;" onclick="goToScreen(1)">Let's go →</button>
+            </div>
+        `;
+    }
+
+    function moodHTML() {
+        const moods = [
+            { emoji:'😊', label:'good', ru:'хорошо' },
+            { emoji:'😴', label:'tired', ru:'устал(а)' },
+            { emoji:'🤩', label:'great', ru:'отлично' },
+            { emoji:'😌', label:'relaxed', ru:'спокойно' },
+            { emoji:'😵', label:'busy', ru:'много дел' },
+            { emoji:'🫠', label:'stressed', ru:'немного нервничаю' }
+        ];
+        let html = `
+            <div class="card">
+                <h2>How are you today?</h2>
+                <div class="emoji-grid">
+        `;
+        moods.forEach(m => {
+            const sel = state.selectedMood === m.emoji ? 'selected' : '';
+            html += `<div class="emoji-item ${sel}" onclick="selectMood('${m.emoji}')">${m.emoji}<span class="emoji-label">${m.label}</span></div>`;
+        });
+        html += `</div>
+                <div id="moodReason" style="${state.selectedMood ? 'display:block' : 'display:none'}">
+                    <p>Why?</p>
+                    <div class="inline-flex">
+                        <span class="btn" onclick="document.getElementById('moodInput').value='I\\'m ___ because…'">💡</span>
+                        <span class="btn" onclick="document.getElementById('moodInput').value='Today I…'">💡</span>
+                    </div>
+                    <input id="moodInput" placeholder="I'm ___ because…" style="width:100%; padding:0.6rem 1rem; border-radius:40px; border:1px solid #e6d5cb; background:#fdf9f6; margin-top:0.5rem;">
+                    <div style="display:flex; gap:0.5rem; flex-wrap:wrap; margin-top:0.4rem; font-size:0.9rem; color:#7a645a;">
+                        <span>school</span><span>work</span><span>sleep</span><span>busy</span><span>weekend</span><span>friends</span>
+                    </div>
+                </div>
+                <div class="teacher-notes" id="teacherNotes_mood"><strong>👩‍🏫</strong> Listen to sentence building.</div>
+            </div>
+        `;
+        return html;
+    }
+
+    function easyChoicesHTML() {
+        const choices = [
+            { q: '☕ coffee / 🍵 tea', a: 'coffee', b: 'tea' },
+            { q: '🏙 city / 🌲 nature', a: 'city', b: 'nature' },
+            { q: '🌊 sea / 🏔 mountains', a: 'sea', b: 'mountains' },
+            { q: '🎬 films / 🎵 music', a: 'films', b: 'music' },
+            { q: '🍕 pizza / 🍣 sushi', a: 'pizza', b: 'sushi' },
+            { q: '🌞 summer / ❄️ winter', a: 'summer', b: 'winter' },
+            { q: '🐶 dogs / 🐱 cats', a: 'dogs', b: 'cats' }
+        ];
+        let html = `<div class="card"><h3>This or that?</h3><p class="sub">Choose one</p>`;
+        choices.forEach((c, idx) => {
+            const key = 'choice_'+idx;
+            const val = state.easyChoices[key] || '';
+            html += `<div style="margin:0.5rem 0; background:#fdf9f6; border-radius:20px; padding:0.5rem 1rem;">
+                <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+                    <span class="btn ${val===c.a?'btn-primary':''}" onclick="easyChoose('${key}','${c.a}')">${c.a}</span>
+                    <span class="btn ${val===c.b?'btn-primary':''}" onclick="easyChoose('${key}','${c.b}')">${c.b}</span>
+                </div>
+                ${val ? `<div style="margin-top:0.3rem; font-size:0.9rem; color:#7a645a;">Why? <span class="btn" onclick="document.getElementById('easyWhy_${idx}').value='I like ${val} because it\\'s…'">💡</span>
+                    <input id="easyWhy_${idx}" placeholder="I like ___ because it's…" style="width:100%; padding:0.3rem 0.8rem; border-radius:40px; border:1px solid #e6d5cb; background:#fdf9f6; margin-top:0.2rem;">
+                </div>` : ''}
+            </div>`;
+        });
+        html += `<div style="margin-top:0.5rem; color:#7a645a; font-size:0.9rem;">fun · beautiful · relaxing · interesting · tasty · cozy</div>
+                <div class="teacher-notes" id="teacherNotes_easychoices"><strong>👩‍🏫</strong> Encourage full sentences.</div>
+            </div>`;
+        return html;
+    }
+
+    function wheelHTML() {
+        return `
+            <div class="card">
+                <h3>🎡 Question Wheel</h3>
+                <p class="sub">Spin and answer</p>
+                <div class="wheel-container">
+                    <div class="wheel-canvas-wrap"><canvas id="wheelCanvas" width="600" height="600"></canvas></div>
+                    <div><button class="btn btn-primary" id="spinBtn">SPIN</button> <button class="btn" id="resetWheelBtn">Reset</button></div>
+                    <div class="wheel-question-box" id="questionDisplay"><span class="placeholder">Press SPIN</span></div>
+                    <div id="wheelWords" style="display:flex; flex-wrap:wrap; gap:0.3rem; justify-content:center;"></div>
+                    <div id="remainingCount" style="color:#7a645a; font-size:0.9rem;">Осталось: ${state.availableQuestions.length}</div>
+                </div>
+                <div class="teacher-notes" id="teacherNotes_wheel"><strong>👩‍🏫</strong> Encourage full sentences. Use word bank.</div>
+            </div>
+        `;
+    }
+
+    function aboutYouHTML() {
+        const starters = ['I live…','I study…','I work…','I like…','I don\'t like…','I usually…','My favourite… is…'];
+        const endings = ['in a big city','at school','in an office','watching films','going for a walk','reading books','meeting friends','playing games'];
+        let html = `
+            <div class="card">
+                <h3>Tell me about yourself</h3>
+                <p class="sub">Build a sentence</p>
+                <div style="display:flex; flex-wrap:wrap; gap:0.5rem;">
+                    ${starters.map(s => `<span class="btn" onclick="document.getElementById('aboutStart').value='${s}'">${s}</span>`).join('')}
+                </div>
+                <input id="aboutStart" placeholder="Start…" style="width:100%; padding:0.6rem 1rem; border-radius:40px; border:1px solid #e6d5cb; background:#fdf9f6; margin-top:0.5rem;">
+                <div style="display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:0.5rem;">
+                    ${endings.map(e => `<span class="btn" onclick="document.getElementById('aboutEnd').value='${e}'">${e}</span>`).join('')}
+                </div>
+                <input id="aboutEnd" placeholder="…end" style="width:100%; padding:0.6rem 1rem; border-radius:40px; border:1px solid #e6d5cb; background:#fdf9f6; margin-top:0.3rem;">
+                <button class="btn btn-primary" style="margin-top:0.8rem;" onclick="alert('Great! Now say it aloud: '+document.getElementById('aboutStart').value+' '+document.getElementById('aboutEnd').value)">Say it</button>
+                <div class="teacher-notes" id="teacherNotes_aboutyou"><strong>👩‍🏫</strong> Help with pronunciation.</div>
+            </div>
+        `;
+        return html;
+    }
+
+    function pictureTalkHTML() {
+        const pics = CONFIG.pictureQuestions;
+        const idx = state.picIndex % pics.length;
+        const img = pics[idx].img;
+        const words = pics[idx].words;
+        const step = state.picStep || 0;
+        const questions = [
+            'What can you see?',
+            'Where are they?',
+            'What are they doing?',
+            'How do they feel?',
+            'Now describe the picture.'
+        ];
+        const q = questions[step] || 'Describe the picture.';
+        let html = `
+            <div class="card">
+                <h3>🖼️ Picture Talk</h3>
+                <img class="pic-img" src="${img}" alt="picture" />
+                <p><strong>${q}</strong></p>
+                <div class="word-bank">
+                    ${words.map(w => `<span class="word-chip ${state.picSelectedWords.includes(w)?'selected':''}" onclick="togglePicWord('${w}')">${w}</span>`).join('')}
+                </div>
+                <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+                    <button class="btn" onclick="nextPicStep()">Next →</button>
+                    <button class="btn" onclick="alert('My words: '+state.picSelectedWords.join(', '))">Show my words</button>
+                </div>
+                <div class="teacher-notes" id="teacherNotes_picturetalk"><strong>👩‍🏫</strong> Encourage full sentence: "I can see…"</div>
+            </div>
+        `;
+        return html;
+    }
+
+    function wordsYouKnowHTML() {
+        const words = ['airport','coffee','computer','restaurant','hotel','phone','taxi','music','pizza','internet','bank','supermarket'];
+        let html = `<div class="card"><h3>You know more English than you think 👀</h3><p class="sub">Click the images</p><div style="display:grid; grid-template-columns:repeat(4,1fr); gap:0.8rem;">`;
+        words.forEach(w => {
+            html += `<div style="background:#fdf9f6; border-radius:16px; padding:0.8rem; text-align:center; border:1px solid #e6d5cb; cursor:pointer;" onclick="this.innerHTML='${w}'">📸</div>`;
+        });
+        html += `</div><div class="teacher-notes" id="teacherNotes_wordsyouknow"><strong>👩‍🏫</strong> Ask: Do you know this word?</div></div>`;
+        return html;
+    }
+
+    function matchWordHTML() {
+        const pairs = [
+            { img: '🚶', word: 'crowded', ru: 'многолюдный' },
+            { img: '📚', word: 'quiet', ru: 'тихий' },
+            { img: '💰', word: 'expensive', ru: 'дорогой' },
+            { img: '💸', word: 'cheap', ru: 'дешёвый' },
+            { img: '🌸', word: 'beautiful', ru: 'красивый' },
+            { img: '😴', word: 'boring', ru: 'скучный' }
+        ];
+        let html = `<div class="card"><h3>Match the word</h3><p class="sub">Drag word to the picture</p><div class="match-area">`;
+        html += `<div class="match-col" id="matchLeft">`;
+        pairs.forEach((p, i) => {
+            html += `<div class="match-item" data-pair="${i}" data-type="left">${p.img}</div>`;
+        });
+        html += `</div><div class="match-col" id="matchRight">`;
+        // shuffle right
+        const shuffled = [...pairs].sort(()=>Math.random()-0.5);
+        shuffled.forEach(p => {
+            html += `<div class="match-item" data-pair="${pairs.indexOf(p)}" data-type="right" draggable="true">${p.word}</div>`;
+        });
+        html += `</div></div><div id="matchResult" style="margin-top:0.5rem;"></div>
+                <div class="teacher-notes" id="teacherNotes_matchword"><strong>👩‍🏫</strong> Check pronunciation.</div></div>`;
+        return html;
+    }
+
+    function oppositesHTML() {
+        const pairs = CONFIG.opposites;
+        let html = `<div class="card"><h3>Opposites</h3><p class="sub">Find the pairs</p><div style="display:grid; grid-template-columns:repeat(4,1fr); gap:0.8rem;">`;
+        const all = pairs.flatMap(p => [p.a, p.b]);
+        const shuffled = all.sort(()=>Math.random()-0.5);
+        shuffled.forEach((word, idx) => {
+            html += `<div class="card" style="cursor:pointer; text-align:center; padding:0.8rem;" onclick="flipOpposite(${idx}, '${word}')">${word}</div>`;
+        });
+        html += `</div><div id="oppositeResult" style="margin-top:0.5rem;"></div>
+                <div class="teacher-notes" id="teacherNotes_opposites"><strong>👩‍🏫</strong> Help with meaning.</div></div>`;
+        return html;
+    }
+
+    function grammarGameHTML() {
+        return `
+            <div class="card">
+                <h3>Which one sounds right?</h3>
+                <div style="margin:0.8rem 0;">
+                    <p>She work in a café. <span class="btn" onclick="grammarAnswer(0,0)">A</span></p>
+                    <p>She works in a café. <span class="btn" onclick="grammarAnswer(0,1)">B</span></p>
+                    <div id="grammarResult0"></div>
+                </div>
+                <div style="margin:0.8rem 0;">
+                    <p>I am go to work every day. <span class="btn" onclick="grammarAnswer(1,0)">A</span></p>
+                    <p>I go to work every day. <span class="btn" onclick="grammarAnswer(1,1)">B</span></p>
+                    <div id="grammarResult1"></div>
+                </div>
+                <div style="margin:0.8rem 0;">
+                    <p>Yesterday I watch a film. <span class="btn" onclick="grammarAnswer(2,0)">A</span></p>
+                    <p>Yesterday I watched a film. <span class="btn" onclick="grammarAnswer(2,1)">B</span></p>
+                    <div id="grammarResult2"></div>
+                </div>
+                <div class="teacher-notes" id="teacherNotes_grammargame"><strong>👩‍🏫</strong> Explain -s for he/she/it.</div>
+            </div>
+        `;
+    }
+
+    function buildSentenceHTML() {
+        return `
+            <div class="card">
+                <h3>Build the sentence</h3>
+                <p class="sub">Put the words in order</p>
+                <div style="display:flex; flex-wrap:wrap; gap:0.5rem; justify-content:center;">
+                    ${['usually','I','coffee','drink','morning','in','the'].map(w => `<span class="btn" draggable="true" ondragstart="dragWord(event)" ondragend="dragEnd(event)">${w}</span>`).join('')}
+                </div>
+                <div style="border:2px dashed #e6d5cb; border-radius:20px; padding:0.8rem; min-height:60px; margin-top:0.5rem;" id="sentenceDrop" ondrop="dropWord(event)" ondragover="allowDrop(event)">Drop here</div>
+                <button class="btn btn-primary" style="margin-top:0.5rem;" onclick="checkSentence()">Check</button>
+                <div id="sentenceResult" style="margin-top:0.5rem;"></div>
+                <div class="teacher-notes" id="teacherNotes_buildsentence"><strong>👩‍🏫</strong> Ask: "Now make it true for you."</div>
+            </div>
+        `;
+    }
+
+    function whatHappenedHTML() {
+        return `
+            <div class="card">
+                <h3>What happened yesterday?</h3>
+                <p class="sub">Match the verbs</p>
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.8rem;">
+                    <div><span class="btn">wake up</span> <span class="btn" onclick="matchPast('wake up','woke up')">woke up</span></div>
+                    <div><span class="btn">go</span> <span class="btn" onclick="matchPast('go','went')">went</span></div>
+                    <div><span class="btn">meet</span> <span class="btn" onclick="matchPast('meet','met')">met</span></div>
+                    <div><span class="btn">watch</span> <span class="btn" onclick="matchPast('watch','watched')">watched</span></div>
+                </div>
+                <div id="pastResult" style="margin-top:0.5rem;"></div>
+                <div class="teacher-notes" id="teacherNotes_whathappened"><strong>👩‍🏫</strong> Practice past simple.</div>
+            </div>
+        `;
+    }
+
+    function listeningHTML() {
+        return `
+            <div class="card">
+                <h3>🎧 Listening</h3>
+                <p class="sub">Listen and answer</p>
+                <button class="btn btn-primary" onclick="playListening()">▶ Play</button>
+                <div style="margin-top:0.8rem;">
+                    <p><strong>Where does Anna work?</strong></p>
+                    <div class="inline-flex">
+                        <span class="btn" onclick="listeningAnswer(0)">office</span>
+                        <span class="btn" onclick="listeningAnswer(1)">café</span>
+                        <span class="btn" onclick="listeningAnswer(2)">school</span>
+                        <span class="btn" onclick="listeningAnswer(3)">hospital</span>
+                    </div>
+                    <div id="listeningResult"></div>
+                </div>
+                <button class="btn" onclick="showTranscript()">Show text</button>
+                <div id="transcript" style="display:none; background:#fdf9f6; border-radius:16px; padding:0.8rem; margin-top:0.4rem;">
+                    "Hi, I'm Anna. I'm 24 and I live in Warsaw. I work in a café. I usually start work at nine. After work I like meeting my friends or watching films."
+                    <br><strong>Useful:</strong> I live in… I work in… I like + -ing
+                </div>
+                <div class="teacher-notes" id="teacherNotes_listening"><strong>👩‍🏫</strong> Play again if needed.</div>
+            </div>
+        `;
+    }
+
+    function listeningPictureHTML() {
+        return `
+            <div class="card">
+                <h3>Listen & choose the picture</h3>
+                <button class="btn btn-primary" onclick="playListeningPicture()">▶ Listen</button>
+                <div style="display:flex; gap:0.8rem; margin-top:0.8rem; flex-wrap:wrap;">
+                    <div class="card" style="cursor:pointer;" onclick="listeningPicAnswer(0)">🖼️ Room A</div>
+                    <div class="card" style="cursor:pointer;" onclick="listeningPicAnswer(1)">🖼️ Room B</div>
+                    <div class="card" style="cursor:pointer;" onclick="listeningPicAnswer(2)">🖼️ Room C</div>
+                </div>
+                <div id="listeningPicResult"></div>
+                <div class="teacher-notes" id="teacherNotes_listeningpicture"><strong>👩‍🏫</strong> Check prepositions.</div>
+            </div>
+        `;
+    }
+
+    function audioRepeatHTML() {
+        const words = ['comfortable','interesting','vegetable','usually','favourite'];
+        let html = `<div class="card"><h3>🔊 Your turn</h3><p class="sub">Listen and repeat</p>`;
+        words.forEach(w => {
+            html += `<div style="display:flex; align-items:center; gap:0.8rem; margin:0.3rem 0;">
+                <span class="btn" onclick="sayWord('${w}')">🔊 ${w}</span>
+                <span style="font-size:2rem; opacity:0.3;">🎤</span>
+            </div>`;
+        });
+        html += `<div class="teacher-notes" id="teacherNotes_audiorepeat"><strong>👩‍🏫</strong> Listen to pronunciation.</div></div>`;
+        return html;
+    }
+
+    function foodGameHTML() {
+        return `
+            <div class="card">
+                <h3>🍳 Breakfast time</h3>
+                <p class="sub">What can you see?</p>
+                <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+                    <span class="btn" onclick="foodClick('egg')">🥚 egg</span>
+                    <span class="btn" onclick="foodClick('toast')">🍞 toast</span>
+                    <span class="btn" onclick="foodClick('coffee')">☕ coffee</span>
+                    <span class="btn" onclick="foodClick('fruit')">🍓 fruit</span>
+                    <span class="btn" onclick="foodClick('juice')">🧃 juice</span>
+                </div>
+                <div id="foodList" style="margin-top:0.5rem; min-height:2rem;">Your plate: </div>
+                <button class="btn btn-primary" onclick="alert('For breakfast, I usually have…')">Tell me</button>
+                <div class="teacher-notes" id="teacherNotes_foodgame"><strong>👩‍🏫</strong> Encourage "I like / I don't like".</div>
+            </div>
+        `;
+    }
+
+    function shoppingHTML() {
+        const items = [
+            { name: 'T-shirt', price: 20 },
+            { name: 'jeans', price: 50 },
+            { name: 'trainers', price: 80 },
+            { name: 'bag', price: 35 }
+        ];
+        let html = `<div class="card"><h3>🛍️ Shopping</h3><p class="sub">You have €100. What do you buy?</p>`;
+        items.forEach((item, i) => {
+            html += `<div style="display:flex; justify-content:space-between; border-bottom:1px solid #e6d5cb; padding:0.4rem 0;">
+                <span>${item.name}</span>
+                <span>€${item.price}</span>
+                <span class="btn" onclick="addToCart(${i})">+</span>
+            </div>`;
+        });
+        html += `<div id="cartTotal" style="margin-top:0.5rem;">Total: €0</div>
+                <button class="btn" onclick="alert('I want…')">Tell me why</button>
+                <div class="teacher-notes" id="teacherNotes_shopping"><strong>👩‍🏫</strong> Practice "I want… I like…"</div></div>`;
+        return html;
+    }
+
+    function travelEasyHTML() {
+        const cities = ['London','Rome','Barcelona'];
+        let html = `<div class="card"><h3>✈️ Weekend trip</h3><p class="sub">Choose a city</p><div class="inline-flex">`;
+        cities.forEach(c => {
+            html += `<span class="btn" onclick="selectCity('${c}')">${c}</span>`;
+        });
+        html += `</div><div id="cityActivities" style="margin-top:0.5rem;"></div>
+                <div class="teacher-notes" id="teacherNotes_traveleasy"><strong>👩‍🏫</strong> Use "I want to go to…"</div></div>`;
+        return html;
+    }
+
+    function suitcaseHTML() {
+        const items = ['swimsuit','jacket','umbrella','book','laptop','sunglasses','boots','passport','camera'];
+        let html = `<div class="card"><h3>🧳 What would you take?</h3><p class="sub">Drag to suitcase (seaside 3 days)</p><div class="match-area">`;
+        html += `<div class="match-col" id="suitcaseItems">`;
+        items.forEach((item, i) => {
+            html += `<div class="match-item" draggable="true" ondragstart="dragSuitcase(event, '${item}')">${item}</div>`;
+        });
+        html += `</div><div class="match-col" id="suitcaseDrop" style="border:2px dashed #e6d5cb; border-radius:20px; padding:0.8rem; min-height:150px; width:200px;" ondrop="dropSuitcase(event)" ondragover="allowDrop(event)">Suitcase</div>`;
+        html += `</div><div id="suitcaseList"></div>
+                <div class="teacher-notes" id="teacherNotes_suitcase"><strong>👩‍🏫</strong> Ask "Why do you need this?"</div></div>`;
+        return html;
+    }
+
+    function guessWordHTML() {
+        return `
+            <div class="card">
+                <h3>🔍 Guess the word</h3>
+                <p class="sub">Click to reveal</p>
+                <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:0.8rem;">
+                    ${['🍕','✈️','🚲','🎧','🏖️','🏪'].map((emoji,i) => `<div class="card" style="cursor:pointer; text-align:center; padding:0.8rem; font-size:2rem;" onclick="revealGuess(${i})">${emoji}</div>`).join('')}
+                </div>
+                <div id="guessResult" style="margin-top:0.5rem;"></div>
+                <div class="teacher-notes" id="teacherNotes_guessword"><strong>👩‍🏫</strong> Ask "What is it?"</div>
+            </div>
+        `;
+    }
+
+    function whoIsItHTML() {
+        return `
+            <div class="card">
+                <h3>Who is it?</h3>
+                <p>She has long dark hair. She's wearing a blue jacket. She's smiling.</p>
+                <div class="inline-flex">
+                    <span class="btn" onclick="whoIsItAnswer(0)">Anna</span>
+                    <span class="btn" onclick="whoIsItAnswer(1)">Tom</span>
+                    <span class="btn" onclick="whoIsItAnswer(2)">Maria</span>
+                    <span class="btn" onclick="whoIsItAnswer(3)">Leo</span>
+                </div>
+                <div id="whoResult"></div>
+                <div style="margin-top:0.8rem;">
+                    <p><strong>Now describe someone</strong></p>
+                    <div class="word-bank">
+                        <span class="word-chip">hair</span><span class="word-chip">short</span><span class="word-chip">long</span>
+                        <span class="word-chip">dark</span><span class="word-chip">blonde</span><span class="word-chip">wear</span><span class="word-chip">glasses</span>
+                    </div>
+                </div>
+                <div class="teacher-notes" id="teacherNotes_whoisit"><strong>👩‍🏫</strong> Help with description.</div>
+            </div>
+        `;
+    }
+
+    function weatherHTML() {
+        return `
+            <div class="card">
+                <h3>☀️ Weather + Clothes</h3>
+                <p>It's rainy and cold. What do you wear?</p>
+                <div class="inline-flex">
+                    <span class="btn" onclick="weatherWear('jacket')">jacket</span>
+                    <span class="btn" onclick="weatherWear('T-shirt')">T-shirt</span>
+                    <span class="btn" onclick="weatherWear('boots')">boots</span>
+                    <span class="btn" onclick="weatherWear('dress')">dress</span>
+                    <span class="btn" onclick="weatherWear('umbrella')">umbrella</span>
+                    <span class="btn" onclick="weatherWear('shorts')">shorts</span>
+                </div>
+                <div id="weatherOutfit" style="margin-top:0.5rem;"></div>
+                <div class="teacher-notes" id="teacherNotes_weather"><strong>👩‍🏫</strong> "I'm wearing…"</div>
+            </div>
+        `;
+    }
+
+    function speakingHTML() {
+        const topics = ['My weekend','My city','My favourite food','My family','My perfect holiday','My favourite film'];
+        return `
+            <div class="card">
+                <h3>🗣️ Speaking</h3>
+                <p class="sub">Talk for 30 seconds</p>
+                <div class="inline-flex">
+                    ${topics.map(t => `<span class="btn" onclick="startSpeaking('${t}')">${t}</span>`).join('')}
+                </div>
+                <div id="speakingArea" style="margin-top:0.8rem;">
+                    <div id="speakingTopic" style="font-size:1.2rem;"></div>
+                    <div id="speakingTimer" style="font-size:2rem; font-family:'Playfair Display',serif; color:#a67b6b;">00:30</div>
+                    <div><button class="btn" onclick="startTimer()">Start</button> <button class="btn" onclick="pauseTimer()">Pause</button> <button class="btn" onclick="resetTimer()">Reset</button></div>
+                </div>
+                <div class="teacher-notes" id="teacherNotes_speaking"><strong>👩‍🏫</strong> Listen for fluency.</div>
+            </div>
+        `;
+    }
+
+    function rapidFireHTML() {
+        const qs = ['Morning / night','Sweet / salty','City / nature','Summer / winter','Netflix / YouTube','Cook / order food','Stay home / go out','Train / plane'];
+        const idx = state.rapidIndex || 0;
+        let html = `<div class="card"><h3>⚡ Rapid Fire</h3><p class="sub">Quick! Choose one.</p>`;
+        if (idx < qs.length) {
+            html += `<div style="font-size:1.2rem; margin-bottom:0.5rem;">${qs[idx]}</div>
+                <div class="inline-flex"><span class="btn" onclick="rapidAnswer('left')">← left</span><span class="btn" onclick="rapidAnswer('right')">right →</span></div>`;
+        } else {
+            html += `<div>One last question… What do you want to do in English?</div>
+                <div class="inline-flex">
+                    <span class="btn" onclick="finalGoal('speak')">🗣 speak</span>
+                    <span class="btn" onclick="finalGoal('travel')">✈️ travel</span>
+                    <span class="btn" onclick="finalGoal('watch films')">🎬 watch films</span>
+                    <span class="btn" onclick="finalGoal('work')">💼 work</span>
+                    <span class="btn" onclick="finalGoal('study')">🎓 study</span>
+                    <span class="btn" onclick="finalGoal('move abroad')">🌍 move abroad</span>
+                    <span class="btn" onclick="finalGoal('meet people')">🤝 meet people</span>
+                </div>
+                <div id="finalGoalDisplay" style="margin-top:0.5rem;"></div>`;
+        }
+        html += `<div class="teacher-notes" id="teacherNotes_rapidfire"><strong>👩‍🏫</strong> Note hesitation.</div></div>`;
+        return html;
+    }
+
+    function finalHTML() {
+        return `
+            <div class="card text-center" style="padding:2.5rem 2rem;">
+                <h2 style="font-size:2.8rem;">You did it 🎉</h2>
+                <p style="font-size:1.4rem; color:#7a645a;">You spoke English today.</p>
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.8rem; margin:1.5rem 0;">
+                    <div class="card">✓ answered questions</div>
+                    <div class="card">✓ understood audio</div>
+                    <div class="card">✓ described pictures</div>
+                    <div class="card">✓ learned new words</div>
+                </div>
+                <p style="font-size:1.2rem; color:#a67b6b;">See you next time 👋</p>
+                <div style="margin-top:1rem; font-size:3rem;">✨</div>
+            </div>
+        `;
+    }
+
+    // ============================================================
+    // INTERACTIVE FUNCTIONS
+    // ============================================================
+
+    // Navigation
+    function goToScreen(index) {
+        if (index < 0 || index >= state.screens.length) return;
+        state.currentScreen = index;
+        renderScreen(index);
+        saveState();
+    }
+
+    // Mood
+    function selectMood(emoji) {
+        state.selectedMood = emoji;
+        renderScreen(state.currentScreen);
+        document.getElementById('moodReason').style.display = 'block';
+    }
+
+    // Easy choices
+    function easyChoose(key, val) {
+        state.easyChoices[key] = val;
+        renderScreen(state.currentScreen);
+    }
+
+    // Wheel
+    let wheelAnimId = null, isSpinning = false;
+    function initWheel() {
+        const canvas = document.getElementById('wheelCanvas');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        drawWheel(ctx, canvas, state.availableQuestions, state.wheelRotation);
+        document.getElementById('spinBtn').onclick = spinWheel;
+        document.getElementById('resetWheelBtn').onclick = resetWheel;
+        document.getElementById('remainingCount').textContent = `Осталось: ${state.availableQuestions.length}`;
+    }
+
+    function drawWheel(ctx, canvas, questions, rotation) {
+        const count = questions.length;
+        const w = canvas.width, h = canvas.height;
+        const cx = w/2, cy = h/2, r = 250;
+        ctx.clearRect(0, 0, w, h);
+        if (count === 0) {
+            ctx.font = '28px Lato'; ctx.fillStyle = '#a67b6b'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+            ctx.fillText('🎉 all done!', cx, cy);
+            return;
+        }
+        const colors = ['#f7d8d0','#e8d0c4','#dcc4b8','#f0ddd4','#e6cfc2','#dcc0b0','#f5dcd0','#e8d0c4','#dcc4b8','#f0ddd4','#e6cfc2','#dcc0b0'];
+        const step = (2*Math.PI)/count;
+        for (let i=0; i<count; i++) {
+            const start = i*step + rotation;
+            const end = start + step;
+            ctx.beginPath(); ctx.moveTo(cx, cy); ctx.arc(cx, cy, r, start, end); ctx.closePath();
+            ctx.fillStyle = colors[i%colors.length]; ctx.fill();
+            ctx.strokeStyle = '#fff5f0'; ctx.lineWidth = 2; ctx.stroke();
+            ctx.save(); ctx.translate(cx, cy); ctx.rotate(start + step/2);
+            ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.font = 'bold 20px Lato';
+            ctx.fillStyle = '#6f5a50'; ctx.fillText(i+1, r*0.65, 0); ctx.restore();
+        }
+        ctx.beginPath(); ctx.arc(cx, cy, 35, 0, 2*Math.PI); ctx.fillStyle = '#f5e4db'; ctx.fill(); ctx.strokeStyle = '#dbb8ab'; ctx.lineWidth=3; ctx.stroke();
+        ctx.save(); ctx.translate(cx, cy); ctx.rotate(rotation);
+        ctx.beginPath(); ctx.moveTo(0, -r-10); ctx.lineTo(-14, -r+20); ctx.lineTo(14, -r+20); ctx.closePath(); ctx.fillStyle = '#dbb8ab'; ctx.fill(); ctx.restore();
+        document.getElementById('remainingCount').textContent = `Осталось: ${count}`;
+        if (count === 0) { document.getElementById('spinBtn').disabled = true; document.getElementById('questionDisplay').innerHTML = '<span style="color:#a67b6b;">🎉 You\'ve answered them all!</span>'; }
+        else { document.getElementById('spinBtn').disabled = false; }
+    }
+
+    function spinWheel() {
+        if (isSpinning) return;
+        const questions = state.availableQuestions;
+        if (questions.length === 0) { alert('All questions used! Reset.'); return; }
+        isSpinning = true;
+        const canvas = document.getElementById('wheelCanvas');
+        const ctx = canvas.getContext('2d');
+        const count = questions.length;
+        const step = (2*Math.PI)/count;
+        const targetIdx = Math.floor(Math.random() * count);
+        const targetAngle = targetIdx * step + step/2;
+        const extraSpins = 5 + Math.random()*4;
+        const totalRotation = extraSpins * 2*Math.PI + targetAngle;
+        const startRotation = state.wheelRotation;
+        const duration = 3000 + Math.random()*1200;
+        const startTime = performance.now();
+        function animate(time) {
+            const elapsed = time - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const ease = 1 - Math.pow(1-progress, 3);
+            const current = startRotation + totalRotation * ease;
+            state.wheelRotation = current;
+            drawWheel(ctx, canvas, questions, current);
+            if (progress < 1) { wheelAnimId = requestAnimationFrame(animate); }
+            else {
+                state.wheelRotation = startRotation + totalRotation;
+                drawWheel(ctx, canvas, questions, state.wheelRotation);
+                const q = questions[targetIdx];
+                document.getElementById('questionDisplay').innerHTML = `<span>${q}</span>`;
+                // word bank
+                const words = getWordsForQuestion(q);
+                document.getElementById('wheelWords').innerHTML = words.map(w => `<span class="word-chip">${w}</span>`).join(' ');
+                state.availableQuestions.splice(targetIdx, 1);
+                drawWheel(ctx, canvas, state.availableQuestions, state.wheelRotation);
+                isSpinning = false;
+                document.getElementById('spinBtn').disabled = false;
+                document.getElementById('remainingCount').textContent = `Осталось: ${state.availableQuestions.length}`;
+                if (state.availableQuestions.length === 0) { document.getElementById('questionDisplay').innerHTML = '<span style="color:#a67b6b;">🎉 You\'ve answered them all!</span>'; }
+            }
+        }
+        wheelAnimId = requestAnimationFrame(animate);
+    }
+
+    function getWordsForQuestion(q) {
+        const map = {
+            'food': ['pizza', 'pasta', 'rice', 'fruit', 'delicious'],
+            'weekends': ['relax', 'friends', 'cinema', 'walk', 'sleep'],
+            'travelling': ['plane', 'hotel', 'sea', 'city', 'visit', 'beautiful'],
+            'film': ['action', 'comedy', 'drama', 'actors', 'cinema'],
+            'music': ['pop', 'rock', 'classical', 'sing', 'dance'],
+            'pet': ['cat', 'dog', 'fish', 'friend', 'love'],
+            'season': ['summer', 'winter', 'spring', 'autumn', 'weather'],
+            'wake up': ['early', 'late', 'morning', 'alarm', 'coffee'],
+            'after work': ['relax', 'read', 'cook', 'watch TV', 'sleep'],
+            'city': ['buildings', 'park', 'museum', 'café', 'bustling'],
+            'cooking': ['recipe', 'delicious', 'kitchen', 'taste', 'meal'],
+            'apps': ['social media', 'games', 'messages', 'photos', 'maps']
+        };
+        const key = Object.keys(map).find(k => q.toLowerCase().includes(k));
+        return key ? map[key] : ['fun', 'nice', 'great', 'interesting', 'good'];
+    }
+
+    function resetWheel() {
+        if (wheelAnimId) { cancelAnimationFrame(wheelAnimId); wheelAnimId = null; }
+        state.availableQuestions = [...CONFIG.wheelQuestions];
+        state.wheelRotation = 0;
+        isSpinning = false;
+        const canvas = document.getElementById('wheelCanvas');
+        if (canvas) { const ctx = canvas.getContext('2d'); drawWheel(ctx, canvas, state.availableQuestions, 0); }
+        document.getElementById('questionDisplay').innerHTML = '<span class="placeholder">Press SPIN</span>';
+        document.getElementById('wheelWords').innerHTML = '';
+        document.getElementById('remainingCount').textContent = `Осталось: ${state.availableQuestions.length}`;
+        document.getElementById('spinBtn').disabled = false;
+    }
+
+    // Picture talk
+    function togglePicWord(w) {
+        const idx = state.picSelectedWords.indexOf(w);
+        if (idx > -1) state.picSelectedWords.splice(idx, 1);
+        else state.picSelectedWords.push(w);
+        renderScreen(state.currentScreen);
+    }
+    function nextPicStep() {
+        state.picStep = (state.picStep || 0) + 1;
+        if (state.picStep > 4) state.picStep = 4;
+        renderScreen(state.currentScreen);
+    }
+
+    // Matching drag & drop
+    function initMatching() {
+        const items = document.querySelectorAll('.match-item[data-type="right"]');
+        items.forEach(el => {
+            el.addEventListener('dragstart', handleDragStart);
+            el.addEventListener('dragend', handleDragEnd);
+        });
+        document.querySelectorAll('.match-item[data-type="left"]').forEach(el => {
+            el.addEventListener('dragover', handleDragOver);
+            el.addEventListener('drop', handleDrop);
+        });
+    }
+    let draggedId = null;
+    function handleDragStart(e) { draggedId = e.target.dataset.pair; e.target.classList.add('dragging'); }
+    function handleDragEnd(e) { e.target.classList.remove('dragging'); }
+    function handleDragOver(e) { e.preventDefault(); }
+    function handleDrop(e) {
+        e.preventDefault();
+        const targetPair = e.target.dataset.pair;
+        if (draggedId === targetPair) {
+            e.target.classList.add('matched');
+            document.querySelector(`.match-item[data-pair="${draggedId}"][data-type="right"]`).classList.add('matched');
+            document.getElementById('matchResult').textContent = '✅ Matched! Nice!';
+        } else {
+            document.getElementById('matchResult').textContent = '❌ Try again.';
+        }
+    }
+
+    // Opposites game (simplified memory)
+    let oppFlip = [];
+    function flipOpposite(idx, word) {
+        // very simple: just reveal meaning
+        const pair = CONFIG.opposites.find(p => p.a === word || p.b === word);
+        if (pair) {
+            const opposite = (pair.a === word) ? pair.b : pair.a;
+            document.querySelectorAll('.card')[idx].innerHTML = word + ' ↔ ' + opposite;
+            document.getElementById('oppositeResult').textContent = 'Great!';
+        }
+    }
+
+    // Grammar game
+    function grammarAnswer(q, ans) {
+        const correct = [1,1,1]; // 0=first option, 1=second
+        const resultDiv = document.getElementById('grammarResult'+q);
+        if (ans === correct[q]) {
+            resultDiv.innerHTML = '✅ Exactly!';
+        } else {
+            resultDiv.innerHTML = '❌ Almost! Try again.';
+        }
+    }
+
+    // Build sentence (drag & drop)
+    let sentenceWords = [];
+    function dragWord(e) { e.dataTransfer.setData('text', e.target.innerText); }
+    function dragEnd(e) { }
+    function allowDrop(e) { e.preventDefault(); }
+    function dropWord(e) {
+        e.preventDefault();
+        const word = e.dataTransfer.getData('text');
+        const drop = document.getElementById('sentenceDrop');
+        if (drop) {
+            const span = document.createElement('span');
+            span.className = 'btn';
+            span.innerText = word;
+            span.style.margin = '0.2rem';
+            drop.appendChild(span);
+        }
+    }
+    function checkSentence() {
+        const drop = document.getElementById('sentenceDrop');
+        const words = drop.innerText.trim().split(/\s+/);
+        const expected = ['I','usually','drink','coffee','in','the','morning'];
+        if (words.join(' ') === expected.join(' ')) {
+            document.getElementById('sentenceResult').innerHTML = '✅ Perfect!';
+        } else {
+            document.getElementById('sentenceResult').innerHTML = '❌ Try again. Correct: I usually drink coffee in the morning.';
+        }
+    }
+
+    // What happened yesterday
+    function matchPast(base, past) {
+        document.getElementById('pastResult').innerHTML = `✅ ${base} → ${past}`;
+    }
+
+    // Listening
+    function playListening() {
+        const utterance = new SpeechSynthesisUtterance("Hi, I'm Anna. I'm 24 and I live in Warsaw. I work in a café. I usually start work at nine. After work I like meeting my friends or watching films.");
+        utterance.lang = 'en-US';
+        utterance.rate = 0.8;
+        window.speechSynthesis.speak(utterance);
+    }
+    function listeningAnswer(idx) {
+        const correct = 1; // café
+        document.getElementById('listeningResult').innerHTML = (idx === correct) ? '✅ Correct!' : '❌ She works in a café.';
+    }
+    function showTranscript() {
+        const el = document.getElementById('transcript');
+        el.style.display = el.style.display === 'none' ? 'block' : 'none';
+    }
+
+    // Listening picture
+    function playListeningPicture() {
+        const utterance = new SpeechSynthesisUtterance("There's a small table next to the window. There's a laptop on the table and a cup of coffee next to it.");
+        utterance.lang = 'en-US';
+        utterance.rate = 0.7;
+        window.speechSynthesis.speak(utterance);
+    }
+    function listeningPicAnswer(idx) {
+        document.getElementById('listeningPicResult').innerHTML = (idx === 0) ? '✅ Correct!' : '❌ Try again.';
+    }
+
+    // Audio repeat
+    function sayWord(w) {
+        const utterance = new SpeechSynthesisUtterance(w);
+        utterance.lang = 'en-US';
+        utterance.rate = 0.6;
+        window.speechSynthesis.speak(utterance);
+    }
+
+    // Food game
+    function foodClick(item) {
+        const list = document.getElementById('foodList');
+        list.innerHTML += ' ' + item;
+    }
+
+    // Shopping
+    let cart = [];
+    function addToCart(idx) {
+        const items = [
+            { name: 'T-shirt', price: 20 },
+            { name: 'jeans', price: 50 },
+            { name: 'trainers', price: 80 },
+            { name: 'bag', price: 35 }
+        ];
+        cart.push(items[idx]);
+        const total = cart.reduce((sum, i) => sum + i.price, 0);
+        document.getElementById('cartTotal').innerHTML = `Total: €${total}`;
+    }
+
+    // Travel
+    function selectCity(city) {
+        document.getElementById('cityActivities').innerHTML = `
+            <p>What do you want to do in ${city}?</p>
+            <div class="inline-flex">
+                <span class="btn" onclick="alert('visit museums')">🖼️ museums</span>
+                <span class="btn" onclick="alert('eat local food')">🍽️ local food</span>
+                <span class="btn" onclick="alert('walk around')">🚶 walk</span>
+                <span class="btn" onclick="alert('go shopping')">🛍️ shopping</span>
+                <span class="btn" onclick="alert('take photos')">📸 photos</span>
+                <span class="btn" onclick="alert('relax')">🧘 relax</span>
+            </div>
+            <p>Why ${city}? <span class="word-chip">beautiful</span> <span class="word-chip">warm</span> <span class="word-chip">interesting</span> <span class="word-chip">historic</span></p>
+        `;
+    }
+
+    // Suitcase drag & drop
+    function dragSuitcase(e, item) { e.dataTransfer.setData('text', item); }
+    function dropSuitcase(e) {
+        e.preventDefault();
+        const item = e.dataTransfer.getData('text');
+        const list = document.getElementById('suitcaseList');
+        list.innerHTML += ' ' + item;
+        e.target.innerHTML += ' ' + item;
+    }
+
+    // Guess word
+    function revealGuess(idx) {
+        const words = ['pizza', 'airport', 'bicycle', 'headphones', 'beach', 'supermarket'];
+        document.getElementById('guessResult').innerHTML = `It's ${words[idx]}!`;
+    }
+
+    // Who is it
+    function whoIsItAnswer(idx) {
+        const correct = 2; // Maria
+        document.getElementById('whoResult').innerHTML = (idx === correct) ? '✅ Correct!' : '❌ Try again.';
+    }
+
+    // Weather
+    let weatherOutfit = [];
+    function weatherWear(item) {
+        weatherOutfit.push(item);
+        document.getElementById('weatherOutfit').innerHTML = 'I\'m wearing: ' + weatherOutfit.join(', ');
+    }
+
+    // Speaking timer
+    let timerInterval = null;
+    let timerSeconds = 30;
+    function startSpeaking(topic) {
+        document.getElementById('speakingTopic').innerHTML = topic;
+        timerSeconds = 30;
+        document.getElementById('speakingTimer').textContent = '00:30';
+    }
+    function startTimer() {
+        if (timerInterval) clearInterval(timerInterval);
+        timerInterval = setInterval(() => {
+            timerSeconds--;
+            document.getElementById('speakingTimer').textContent = '00:' + (timerSeconds<10?'0':'') + timerSeconds;
+            if (timerSeconds <= 0) { clearInterval(timerInterval); timerInterval = null; }
+        }, 1000);
+    }
+    function pauseTimer() { if (timerInterval) { clearInterval(timerInterval); timerInterval = null; } }
+    function resetTimer() { if (timerInterval) { clearInterval(timerInterval); timerInterval = null; } timerSeconds = 30; document.getElementById('speakingTimer').textContent = '00:30'; }
+
+    // Rapid fire
+    function rapidAnswer(side) {
+        state.rapidIndex = (state.rapidIndex || 0) + 1;
+        renderScreen(state.currentScreen);
+    }
+    function finalGoal(goal) {
+        document.getElementById('finalGoalDisplay').innerHTML = `English goal unlocked ✨ ${goal}`;
+    }
+
+    // Teacher mode
+    function updateTeacherNotes(id) {
+        document.querySelectorAll('.teacher-notes').forEach(el => {
+            if (state.teacherMode) el.classList.add('visible');
+            else el.classList.remove('visible');
+        });
+    }
+
+    // ============================================================
+    // INIT
+    // ============================================================
+    function initScreen(id) {
+        if (id === 'wheel') initWheel();
+        if (id === 'matchword') initMatching();
+        if (id === 'rapidfire') {
+            // nothing special
+        }
+        updateTeacherNotes(id);
+    }
+
+    function initApp() {
+        state.screens = buildScreens();
+        state.currentScreen = 0;
+        // teacher toggle
+        document.getElementById('teacherToggle').addEventListener('click', function() {
+            state.teacherMode = !state.teacherMode;
+            this.classList.toggle('active');
+            updateTeacherNotes(state.screens[state.currentScreen]);
+        });
+        document.getElementById('prevBtn').addEventListener('click', () => { if (state.currentScreen > 0) goToScreen(state.currentScreen - 1); });
+        document.getElementById('nextBtn').addEventListener('click', () => { if (state.currentScreen < state.screens.length - 1) goToScreen(state.currentScreen + 1); });
+        renderScreen(0);
+        // сохранять состояние
+        window.addEventListener('beforeunload', () => { try { localStorage.setItem('lessonState', JSON.stringify(state)); } catch(e){} });
+        // загрузить состояние?
+        try {
+            const data = localStorage.getItem('lessonState');
+            if (data) {
+                const parsed = JSON.parse(data);
+                Object.assign(state, parsed);
+                if (!state.availableQuestions || state.availableQuestions.length === 0) state.availableQuestions = [...CONFIG.wheelQuestions];
+                // восстановить индекс
+                if (state.currentScreen < state.screens.length) renderScreen(state.currentScreen);
+            }
+        } catch(e) {}
+    }
+
+    document.addEventListener('DOMContentLoaded', initApp);
+</script>
+</body>
+</html>
